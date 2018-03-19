@@ -12,17 +12,18 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jenkins-ip>192.168.1.111</jenkins-ip>
   </properties>
   
   
   <distributionManagement>
 		<repository>
-			<id>nexus-development</id>
+			<id>Releases</id>
 			<name>Internal Releases</name>
 			<url>http://${jenkins-ip}:8081/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>nexus-development</id>
+			<id>Snapshots</id>
 			<name>Internal Releases</name>
 			<url>http://${jenkins-ip}:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
@@ -30,10 +31,14 @@
 
 	<repositories>
 		<repository>
-			<id>nexus-thirdparty</id>
+			<id>3rd party</id>
 			<url>http://${jenkins-ip}:8081/nexus/content/repositories/thirdparty</url>
 		</repository>
 	</repositories>
+
+	<scm>
+    	<developerConnection>scm:git:https://github.com/mfernandez-sisdam/publicaciontest.git</developerConnection>
+  </scm>
   
 
   <dependencies>
@@ -44,4 +49,55 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  	<build>
+		<finalName>publicaciontest</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**</include>
+				</includes>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+
+			<resource>
+				<directory>src/main/webapp/includes</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.txt</include>
+				</includes>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.7.0</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				 <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-release-plugin</artifactId>
+	                <version>2.5.3</version>
+            </plugin>
+			</plugins>
+		</pluginManagement>
+
+
+	</build>
+  
+  
+  
 </project>
