@@ -37,7 +37,6 @@
 
 	<scm>
     	<developerConnection>scm:git:https://github.com/mfernandez-sisdam/publicaciontest.git</developerConnection>
-    <tag>HEAD</tag>
   </scm>
   
 
