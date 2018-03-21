@@ -3,7 +3,7 @@
 
   <groupId>com.sisdam</groupId>
   <artifactId>mgf-test</artifactId>
-  <version>1.3-SNAPSHOT</version>
+  <version>1.3</version>
   <packaging>jar</packaging>
 
   <name>mgf-test</name>
@@ -37,6 +37,7 @@
 
 	<scm>
     	<developerConnection>scm:git:https://github.com/mfernandez-sisdam/publicaciontest.git</developerConnection>
+    <tag>mgf-test-1.3</tag>
   </scm>
   
 
